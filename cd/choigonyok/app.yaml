@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-choigonyok
+  namespace: idp-system
+spec:
+  destination:
+    name: ""
+    namespace: idp-system
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+  - path: manifest/choigonyok
+    repoURL: https://github.com/choigonyok/test1256.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
